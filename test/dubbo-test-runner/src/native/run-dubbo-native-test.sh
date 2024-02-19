@@ -29,7 +29,7 @@ if [ $RUN_DELAY -gt 0 ]; then
   sleep $RUN_DELAY
 fi
 
-mvn clean test -PnativeTest 2>&1
+mvn $JAVA_OPTS clean test -PnativeTest 2>&1
 result=$?
 if [ $result -ne 0 ]; then
   echo "Run native tests failure"
