@@ -34,7 +34,7 @@ fi
 
 echo "Running native app : ..."
 start=$SECONDS
-./target/${SERVICE_NAME} 2>&1 &
+./target/${SERVICE_NAME} $JAVA_OPTS 2>&1 &
 pid=$!
 
 echo "Wait for process to exit: $pid .."
