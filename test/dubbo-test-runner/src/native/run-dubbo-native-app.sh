@@ -7,6 +7,13 @@ source $DIR/utils.sh
 
 # build native image first
 cd $DIR/src/${SERVICE_DIR}
+
+# for debug purpose,skip the native build，put the executable file here
+if [ -f "${SERVICE_NAME}" ]; then
+    ./${SERVICE_NAME} $JAVA_OPTS 2>&1
+    exit 0
+fi
+
 echo "Build native app : ..."
 mvn package native:compile -Dmaven.test.skip=true -Pnative 2>&1
 result=$?
