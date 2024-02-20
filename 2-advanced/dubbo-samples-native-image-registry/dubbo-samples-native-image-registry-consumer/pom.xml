@@ -342,6 +342,9 @@
                             <buildArgs>
                                 -H:+ReportExceptionStackTraces
                             </buildArgs>
+                            <systemProperties>
+                                <zookeeper.address>${zookeeper.address}</zookeeper.address>
+                            </systemProperties>
                         </configuration>
                         <executions>
                             <execution>
