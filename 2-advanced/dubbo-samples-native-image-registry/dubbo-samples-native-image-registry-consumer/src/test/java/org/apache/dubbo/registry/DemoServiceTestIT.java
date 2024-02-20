@@ -3,14 +3,18 @@ package org.apache.dubbo.registry;
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ReferenceConfig;
 import org.apache.dubbo.config.RegistryConfig;
+import org.apache.dubbo.registry.consumer.NativeDemoConsumerRegistryApplication;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 /**
  * SpringBootTest 注解如果不使用的话需要自己配置 proxy及 serialization
  */
-@SpringBootTest
+@SpringBootTest(classes = {NativeDemoConsumerRegistryApplication.class})
+@ExtendWith(SpringExtension.class)
 class DemoServiceTestIT {
     private static String zookeeperHost = System.getProperty("zookeeper.address", "127.0.0.1");
     @Test
