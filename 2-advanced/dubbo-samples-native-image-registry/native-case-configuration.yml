@@ -44,3 +44,14 @@ services:
         - zookeeper
     systemProps:
         - zookeeper.address=zookeeper
+
+  dubbo-samples-native-image-registry-test:
+      type: nativeTest
+      basedir: dubbo-samples-native-image-registry-consumer
+      tests:
+          - "**/*IT.class"
+      systemProps:
+          - zookeeper.address=zookeeper
+      waitPortsBeforeRun:
+          - zookeeper:2181
+          - dubbo-samples-native-image-registry-provider:50052

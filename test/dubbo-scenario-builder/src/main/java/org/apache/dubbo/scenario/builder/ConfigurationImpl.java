@@ -719,7 +719,7 @@ public class ConfigurationImpl implements IConfiguration {
         List<String> serviceNames = new ArrayList<>();
         for (Map.Entry<String, ServiceComponent> entry : caseConfiguration.getServices().entrySet()) {
             ServiceComponent service = entry.getValue();
-            if ("test".equals(service.getType())) {
+            if ("test".equals(service.getType()) || "nativeTest".equals(service.getType())) {
                 serviceNames.add(entry.getKey());
             }
         }
