@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 DIR=/usr/local/dubbo/
 
 source $DIR/utils.sh
