@@ -50,6 +50,8 @@ services:
       basedir: dubbo-samples-native-image-registry-consumer
       tests:
           - "**/*IT.class"
+      depends_on:
+          - zookeeper
       systemProps:
           - zookeeper.address=zookeeper
       waitPortsBeforeRun:

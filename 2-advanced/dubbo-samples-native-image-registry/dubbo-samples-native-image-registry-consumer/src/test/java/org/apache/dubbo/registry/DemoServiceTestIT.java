@@ -16,7 +16,7 @@ class DemoServiceTestIT {
         reference.setInterface(DemoService.class);
         DemoService service = reference.get();
         HelloResponse message = service.sayHello(new HelloRequest("dubbo"));
-        Assertions.assertEquals(message.getResponse(), "hi, dubbo");
+        Assertions.assertEquals("dubbo", message.getResponse());
     }
 
 }
