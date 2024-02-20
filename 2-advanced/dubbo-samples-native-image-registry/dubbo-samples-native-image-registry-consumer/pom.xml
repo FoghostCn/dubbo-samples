@@ -325,7 +325,7 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <mainClass>placeholder_avoid_error</mainClass>
+                            <mainClass>placeholder_avoid_error</mainClass> <!-- https://github.com/apache/dubbo/pull/13426 -->
                         </configuration>
                     </plugin>
                     <plugin>

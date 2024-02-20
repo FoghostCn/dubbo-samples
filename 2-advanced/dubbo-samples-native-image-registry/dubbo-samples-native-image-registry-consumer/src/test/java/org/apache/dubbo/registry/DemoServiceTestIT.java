@@ -5,7 +5,12 @@ import org.apache.dubbo.config.ReferenceConfig;
 import org.apache.dubbo.config.RegistryConfig;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
+/**
+ * SpringBootTest 注解如果不使用的话需要自己配置 proxy及 serialization
+ */
+@SpringBootTest
 class DemoServiceTestIT {
     private static String zookeeperHost = System.getProperty("zookeeper.address", "127.0.0.1");
     @Test
