@@ -29,6 +29,8 @@ if [ $RUN_DELAY -gt 0 ]; then
   sleep $RUN_DELAY
 fi
 
+cd $DIR/src/${SERVICE_DIR}
+echo "Build and run native test : ..."
 mvn $JAVA_OPTS clean test -PnativeTest 2>&1
 result=$?
 if [ $result -ne 0 ]; then

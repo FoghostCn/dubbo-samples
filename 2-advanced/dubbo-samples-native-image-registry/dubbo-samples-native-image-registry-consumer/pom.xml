@@ -34,7 +34,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <dubbo.version>3.3.0-beta.1</dubbo.version>
+        <dubbo.version>3.3.0-beta.2-SNAPSHOT</dubbo.version>
         <spring-boot.version>3.0.5</spring-boot.version>
         <protobuf-java.version>3.19.6</protobuf-java.version>
 
@@ -184,6 +184,11 @@
             <version>${junit.platform}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -280,6 +285,11 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <version>3.1.2</version>
+                        <configuration>
+                            <includes>
+                                <include>${env.TEST_PATTERNS}</include>
+                            </includes>
+                        </configuration>
                     </plugin>
                     <plugin>
                         <groupId>org.springframework.boot</groupId>
@@ -314,6 +324,9 @@
                                 </goals>
                             </execution>
                         </executions>
+                        <configuration>
+                            <mainClass></mainClass>
+                        </configuration>
                     </plugin>
                     <plugin>
                         <groupId>org.graalvm.buildtools</groupId>
