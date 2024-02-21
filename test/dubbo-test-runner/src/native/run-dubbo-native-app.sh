@@ -15,7 +15,7 @@ if [ -f "${SERVICE_NAME}" ]; then
 fi
 
 echo "Build native app : ..."
-mvn --no-transfer-progress package native:compile -Dmaven.test.skip=true -Pnative 2>&1
+mvn --no-transfer-progress native:compile -Dmaven.test.skip=true -Pnative 2>&1
 result=$?
 if [ $result -ne 0 ]; then
   echo "Build native app failure "
