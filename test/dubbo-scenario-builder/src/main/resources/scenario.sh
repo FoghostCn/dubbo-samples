@@ -86,10 +86,9 @@ function redirect_container_logs() {
     return 1
   fi
 
-  # can not get logs if status is Created,sometimes docker-compose depends_on will cause a long time `Created` status
-  docker ps --format "table {{.Status}}" -af "name=${container_name}" | grep Created > /dev/null
-  result=$?
-  if [ $result -eq 0 ]; then
+  # can not get logs if status is created,sometimes docker-compose `depends_on` will cause a long time `created` status
+  container_status=`docker inspect -f '{{.State.Status}}' ${container_name}`
+  if [ "$container_status" == "created" ]; then
     echo "wait container start: $container_name"
     return 1
   fi
