@@ -86,6 +86,14 @@ function redirect_container_logs() {
     return 1
   fi
 
+  # can not get logs if status is Created,sometimes docker-compose depends_on will cause a long time `Created` status
+  docker ps --format "table {{.Status}}" -af "name=${container_name}" | grep Created > /dev/null
+  result=$?
+  if [ $result -eq 0 ]; then
+    echo "wait container start: $container_name"
+    return 1
+  fi
+
   echo "Redirect container logs: $container_name" >> $scenario_log
   if [ "$debug_mode" == "1" ]; then
     # redirect container logs to file and display debug message
